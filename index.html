@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Göl Restaurant & Cafe | Marko'nun Yeri - Balıklıgöl Şanlıurfa</title>
+  <meta name="description" content="Şanlıurfa Balıklıgöl'ün kalbinde eşsiz Urfa kebapları, mırra, nargile ve otantik atmosfer. Göl Restaurant & Cafe dijital QR menü ve online sipariş notu oluşturma.">
+  <meta name="keywords" content="Göl Restaurant, Marko'nun Yeri, Balıklıgöl Kebap, Urfa Kebabı, Balıklıgöl Kafe, Şanlıurfa Nargile, Dijital Menü">
+  
+  <!-- OpenGraph Tags for Social Sharing & WhatsApp previews -->
+  <meta property="og:title" content="Göl Restaurant & Cafe | Marko'nun Yeri - Balıklıgöl Şanlıurfa">
+  <meta property="og:description" content="Şanlıurfa Balıklıgöl'ün büyüleyici atmosferinde lezzet, huzur ve keyfin adresi. Dijital menümüzü inceleyin.">
+  <meta property="og:image" content="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="tr_TR">
+
+  <!-- Structured Data: Schema.org Restaurant -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Göl Restaurant & Cafe (Marko'nun Yeri)",
+    "image": "asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg",
+    "telephone": "+905448687876",
+    "email": "hasan.sagir@hotmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Balıklıgöl Cami Mahallesi",
+      "addressLocality": "Haliliye",
+      "addressRegion": "Şanlıurfa",
+      "addressCountry": "TR"
+    },
+    "servesCuisine": ["Urfa Kebap", "Yöresel Urfa Mutfağı", "Nargile", "Tatlı"],
+    "priceRange": "₺₺",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "01:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "02:00"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Fonts: Google Fonts (Playfair Display & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-announcement">
+    <div class="container top-announcement-content">
+      <span><i class="fa-solid fa-location-dot"></i> Balıklıgöl / Şanlıurfa</span>
+      <span class="live-status-pill" id="liveStatusPill"><i class="fa-solid fa-circle"></i> Açık</span>
+      <a href="menu.html" class="top-menu-badge"><i class="fa-solid fa-qrcode"></i> DİJİTAL QR MENÜ</a>
+      <span><i class="fa-solid fa-phone"></i> <a href="tel:+905448687876">+90 (544) 868 78 76</a></span>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-emblem">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">GÖL RESTAURANT</span>
+          <span class="brand-sub">& CAFE • MARKO'NUN YERİ</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <a href="#hero" class="nav-link active"><i class="fa-solid fa-compass"></i> Ana Sayfa</a>
+        <a href="#about" class="nav-link"><i class="fa-solid fa-landmark"></i> Tarihçe</a>
+        <a href="menu.html" class="nav-link highlight-link"><i class="fa-solid fa-utensils"></i> Menü</a>
+        <a href="#gallery" class="nav-link"><i class="fa-solid fa-images"></i> Galeri</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-address-card"></i> İletişim</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <a href="menu.html" class="btn btn-gold btn-sm">
+          <i class="fa-solid fa-utensils"></i> DİJİTAL MENÜ
+        </a>
+        <a href="tel:+905448687876" class="btn btn-outline btn-sm hide-mobile">
+          <i class="fa-solid fa-phone"></i> ARA
+        </a>
+        <button class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Menüyü Aç">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Backdrop Overlay for Mobile Drawer -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+    <!-- Mobile Drawer Nav -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="drawer-logo">GÖL RESTAURANT & CAFE</div>
+        <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
+        <a href="#about" class="mobile-link"><i class="fa-solid fa-landmark"></i> Tarihçe & Ambiyans</a>
+        <a href="menu.html" class="mobile-link"><i class="fa-solid fa-utensils"></i> Dijital QR Menü</a>
+        <a href="#gallery" class="mobile-link"><i class="fa-solid fa-images"></i> Fotoğraf Galerisi</a>
+        <a href="#contact" class="mobile-link"><i class="fa-solid fa-phone"></i> İletişim & Konum</a>
+      </nav>
+      <div class="drawer-footer">
+        <p><i class="fa-solid fa-user-tie"></i> Hasan SAĞIR</p>
+        <a href="tel:+905448687876" class="btn btn-gold btn-block"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-star"></i> Balıklıgöl'ün Tarihi Kalbinde Eşsiz Bir Deneyim
+      </div>
+      <h1 class="hero-title">
+        Lezzet, Huzur ve Keyfin <br><span class="gold-gradient-text">Buluştuğu Yer</span>
+      </h1>
+      <p class="hero-subtitle">
+        Tarihi Urfa Kalesi eteklerinde, Balıklıgöl'ün büyüleyici ambiyansında geleneksel Urfa mutfağının unutulmaz tatları ve koyu sohbetlerin adresi.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="menu.html" class="btn btn-gold btn-lg btn-glow">
+          <i class="fa-solid fa-qrcode"></i> Dijital QR Menüyü İncele
+        </a>
+        <a href="#contact" class="btn btn-glass btn-lg">
+          <i class="fa-solid fa-map-location-dot"></i> Konum ve Yol Tarifi
+        </a>
+      </div>
+
+      <!-- Quick Feature Cards -->
+      <div class="hero-features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+          <div class="feature-info">
+            <h4>Eşsiz Lezzetler</h4>
+            <p>Ustasından hakiki Urfa Kebapları ve özel ev lezzetleri</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-water"></i></div>
+          <div class="feature-info">
+            <h4>Huzurlu Atmosfer</h4>
+            <p>Doğayla iç içe, su sesleri eşliğinde tarihi mekan</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-smog"></i></div>
+          <div class="feature-info">
+            <h4>Nargile Keyfi</h4>
+            <p>Zengin aromalı kaliteli nargile çeşitleri</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-mug-hot"></i></div>
+          <div class="feature-info">
+            <h4>Dost Sohbetleri</h4>
+            <p>Közde demleme çay ve geleneksel Urfa mırrası</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & HISTORY SECTION -->
+  <section id="about" class="about-section">
+    <div class="container grid-2-col">
+      <div class="about-image-wrapper">
+        <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Görünümü" class="about-img main-img" loading="lazy">
+        <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Göl Restaurant Nargile ve Havuz" class="about-img accent-img" loading="lazy">
+        <div class="experience-badge">
+          <span class="num">Marko'nun Yeri</span>
+          <span class="txt">Köklü Misafirperverlik</span>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-tag"><i class="fa-solid fa-feather"></i> Hikayemiz & Ambiyans</div>
+        <h2 class="section-title">Balıklıgöl’ün Tarihi Dokusunda <span class="gold-gradient-text">Unutulmaz Anılar</span></h2>
+        <p class="section-desc">
+          Şanlıurfa’nın simgesi olan tarihi Balıklıgöl Camii Mahallesi’nde, Urfa Kalesi’nin çift sütunlu manzarasına karşı konumlanan <strong>Göl Restaurant & Cafe (Marko'nun Yeri)</strong>, misafirlerine sadece lezzetli yemekler değil, asırlık bir kültürün huzurunu sunuyor.
+        </p>
+        <p class="section-desc">
+          Akşamın tatlı serinliğinde şakırdayan süs havuzlarının yanında, otantik ışıklandırmamız ve aslına uygun dekore edilmiş açık hava bahçemizde lezzet ve dostluk bir araya geliyor.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fa-solid fa-check-double"></i>
+            <div>
+              <strong>Günlük Taze Malzemeler:</strong> Kebaplarımızda kullanılan etler ve yeşillikler her sabah özenle seçilir.
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fa-solid fa-check-double"></i>
+            <div>
+              <strong>Özel Aile ve Grup Alanları:</strong> Geniş açık hava çardağımız ve otantik oturma alanlarımızla tüm sevdiklerinizle konforlu vakit geçirebilirsiniz.
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fa-solid fa-check-double"></i>
+            <div>
+              <strong>Geleneksel Sunumlar:</strong> Bakır tepsilerde sunulan mezeler ve közde pişen özel çay servisi.
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <i class="fa-solid fa-quote-left quote-icon"></i>
+          <p class="quote-text">"Göl'de güzel anılar birikir..."</p>
+          <span class="quote-author">— Hasan SAĞIR / Göl Restaurant & Cafe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL MENU TEASER / SHOWCASE SECTION -->
+  <section id="menu-teaser" class="menu-section menu-teaser-section">
+    <div class="container text-center">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-qrcode"></i> Dijital Lezzet Menüsü</div>
+        <h2 class="section-title">Nefis Urfa Lezzetleri <span class="gold-gradient-text">Bir Tık Uzağınızda</span></h2>
+        <p class="section-desc max-600">
+          Zırh kıyması Urfa kebaplarından közde çaya, künefeden zengin nargile harmanlarına kadar tüm menümüzü telefonunuzdan anında inceleyin.
+        </p>
+      </div>
+
+      <div class="menu-teaser-card">
+        <div class="teaser-badges-grid">
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-drumstick-bite"></i>
+            <span>Kebap & Izgaralar</span>
+          </div>
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-bowl-food"></i>
+            <span>Yöresel Lezzetler</span>
+          </div>
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-mortar-pestle"></i>
+            <span>Taze Meze & Salata</span>
+          </div>
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-ice-cream"></i>
+            <span>Sıcak Künefe & Tatlılar</span>
+          </div>
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-mug-hot"></i>
+            <span>Közde Çay & Mırra</span>
+          </div>
+          <div class="teaser-badge-item">
+            <i class="fa-solid fa-smog"></i>
+            <span>Nargile Çeşitleri</span>
+          </div>
+        </div>
+
+        <div class="teaser-cta-box">
+          <a href="menu.html" class="btn btn-gold btn-lg btn-glow">
+            <i class="fa-solid fa-qrcode"></i> Tüm QR Menüyü Aç & İncele
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag"><i class="fa-solid fa-camera-retro"></i> Fotoğraf Galerisi</div>
+        <h2 class="section-title">Mekanımızdan <span class="gold-gradient-text">Kareler</span></h2>
+        <p class="section-desc max-600">Göl Restaurant & Cafe'nin büyüleyici geceleri, otantik havuz başı ve zengin sunumlarımız.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-index="0" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
+          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Işıkları" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Urfa Kalesi Manzaralı Gece Bahçesi</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-index="1" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.38.jpeg">
+          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38.jpeg" alt="Antika Telefon ve Karanfil Sunumu" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Nostaljik Köşe & İkramlarımız</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-index="2" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg">
+          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Havuz Başı Nargile ve Deri Menü" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Havuz Başı Nargile & Bahçe Keyfi</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-index="3" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.39 (1).jpeg">
+          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39 (1).jpeg" alt="Göl Restaurant Tanıtım Afişi" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Göl Restaurant & Cafe Tabela ve Ambiyans</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-index="4" data-src="asset/balıklıgöl.jpg">
+          <img src="asset/balıklıgöl.jpg" alt="Tarihi Balıklıgöl Görünümü" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Tarihi Balıklıgöl Havzası</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-index="5" data-src="asset/balıklıgöl3.jpg">
+          <img src="asset/balıklıgöl3.jpg" alt="Balıklıgöl Parkı" loading="lazy">
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            <span>Doğayla İç İçe Park Yolu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & BUSINESS CARD SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container grid-2-col">
+      <!-- Business Card Replica -->
+      <div class="business-card-wrapper">
+        <div class="digital-business-card">
+          <div class="card-gold-accent"></div>
+          <div class="card-header-line">
+            <i class="fa-solid fa-crown card-crown"></i>
+            <span class="card-title-sub">Balıklıgöl Cami Mahallesi / Ş.URFA</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-owner-name">Hasan SAĞIR</h3>
+            <p class="card-role">İşletme Sahibi / Yönetim</p>
+
+            <div class="card-details">
+              <div class="card-detail-row">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+905448687876">+90 (544) 868 78 76</a>
+              </div>
+              <div class="card-detail-row">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:hasan.sagir@hotmail.com">hasan.sagir@hotmail.com</a>
+              </div>
+              <div class="card-detail-row">
+                <i class="fa-brands fa-instagram"></i>
+                <a href="https://instagram.com/golrestaurantcafe" target="_blank">@golrestaurantcafe</a> / <a href="https://instagram.com/golkafeant" target="_blank">@golkafeant</a>
+              </div>
+              <div class="card-detail-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Balıklıgöl Cami Mahallesi, Haliliye / Şanlıurfa</span>
+              </div>
+            </div>
+
+            <div class="card-footer-branding">
+              <strong>GÖL RESTAURANT & CAFE</strong>
+              <small>MARKO'NUN YERİ</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location Map & Info -->
+      <div class="contact-info-panel">
+        <div class="section-tag"><i class="fa-solid fa-map-location"></i> Bize Ulaşın</div>
+        <h2 class="section-title">Balıklıgöl'e Bekliyoruz</h2>
+        <p class="section-desc">
+          Şanlıurfa gezilerinizde tarihi Balıklıgöl ziyaretiniz sonrasında serinlemek, meşhur Urfa lezzetlerinin tadına bakmak veya közde çay ve nargile keyfi yapmak için haftanın 7 günü hizmetinizdeyiz.
+        </p>
+
+        <div class="contact-quick-buttons">
+          <a href="tel:+905448687876" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Hemen Arayın</a>
+          <a href="https://maps.google.com/?q=Balıklıgöl+Şanlıurfa" target="_blank" class="btn btn-outline"><i class="fa-solid fa-directions"></i> Haritada Yol Tarifi Al</a>
+        </div>
+
+        <div class="hours-card">
+          <h4><i class="fa-solid fa-clock"></i> Çalışma Saatleri</h4>
+          <ul>
+            <li><span>Hafta İçi:</span> <strong>08:00 - 01:00</strong></li>
+            <li><span>Hafta Sonu:</span> <strong>08:00 - 02:00</strong></li>
+            <li><span>Kahvaltı Servisi:</span> <strong>08:00 - 12:30</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>GÖL RESTAURANT & CAFE</h3>
+        <p class="footer-slogan">"Lezzet, Huzur ve Keyfin Buluştuğu Yer"</p>
+        <p class="footer-sub">MARKO'NUN YERİ — Balıklıgöl / Şanlıurfa</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Ana Sayfa</a>
+        <a href="#about">Tarihçe</a>
+        <a href="#menu">Menü</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#contact">İletişim</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://instagram.com/golrestaurantcafe" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="tel:+905448687876" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://wa.me/905448687876" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container flex-between">
+        <p>&copy; 2026 Göl Restaurant & Cafe. Tüm hakları saklıdır.</p>
+        <p class="dev-credits">Tasarım & Geliştirme: <span class="gold-text">Göl Restaurant Dijital Menü</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL FOR GALLERY WITH NAVIGATION -->
+  <div class="lightbox-backdrop" id="lightboxModal" style="display: none;">
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Önceki Görsel"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
+      <img src="" id="lightboxImg" alt="Büyük Görsel">
+      <p id="lightboxCaption"></p>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Sonraki Görsel"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/905448687876" target="_blank" class="floating-whatsapp-btn" aria-label="WhatsApp İletişim">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-text">Hızlı İletişim</span>
+  </a>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Yukarı Çık">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Main Application Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>
