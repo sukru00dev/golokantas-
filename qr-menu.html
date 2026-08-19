@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr" style="height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Dijital QR Menü | Göl Restaurant & Cafe</title>
+  <meta name="description" content="Göl Restaurant & Cafe (Marko'nun Yeri) dijital QR lezzet menüsü. Urfa kebapları, mırra, tatlı ve nargile çeşitleri.">
+  <meta name="theme-color" content="#D4AF37">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="asset/görseller/son%20logo.png">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Menu Page Specific CSS -->
+  <link rel="stylesheet" href="menu-page.css">
+</head>
+<body class="dark theme-classic" style="position: relative; min-height: 100%; top: 0px;">
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand me-auto" href="index.html" style="display: flex; align-items: center; gap: 8px;">
+        <img src="asset/görseller/son%20logo.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;">
+        <span>GÖL LOKANTASI</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <a href="index.html" class="btn btn-outline-gold" style="font-size: 0.75rem; padding: 4px 10px; border: 1px solid var(--gold-primary); color: var(--gold-primary); text-decoration: none; border-radius: 20px;"><i class="fa-solid fa-globe"></i> Web Sitesi</a>
+        <button class="lang-toggle-btn" id="themeToggleBtn"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== TOP BANNER IMAGE ====== -->
+  <div id="mainBanner" class="main-banner">
+    <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Banner" class="banner-img">
+  </div>
+
+  <!-- ====== SEARCH + LEGAL BUTTON ====== -->
+  <div class="container">
+    <div class="search-legal-wrapper">
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="text" id="menuSearchInput" placeholder="Lezzetleri keşfet..." autocomplete="off">
+      </div>
+      <button class="legal-btn" id="legalBtn">
+        <i class="fa-solid fa-circle-info"></i>
+      </button>
+    </div>
+  </div>
+
+  
+  </div>
+
+  <!-- ====== CATEGORY GRID (Accordion) ====== -->
+  <div class="container mt-2">
+    <div class="category-grid" id="categoryGrid">
+      <!-- JS populates collapsible category cards + product grids -->
+    </div>
+  </div>
+
+  <!-- ====== NO RESULTS STATE ====== -->
+  <div class="container" id="noResultsState" style="display: none; text-align: center; padding: 60px 20px;">
+    <i class="fa-solid fa-utensils" style="font-size: 3rem; color: var(--muted-color); margin-bottom: 15px;"></i>
+    <h3 style="color: var(--text-color);">Aradığınız kritere uygun ürün bulunamadı</h3>
+    <p style="color: var(--muted-color);">Arama terimini değiştirin veya filtreleri temizleyin.</p>
+    <button class="btn-reset-search" id="resetSearchBtn">Tüm Menüyü Göster</button>
+  </div>
+
+  <!-- ====== PRODUCT DETAIL MODAL ====== -->
+  <div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+      <div class="modal-content" style="border: none; border-radius: 20px; overflow: hidden;">
+        <div class="modal-header p-3 border-0 position-relative">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-3" id="modalCloseBtn" style="z-index:10;"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge mb-2" id="modalBadge" style="display:none;"></span>
+          <h5 class="fw-bold mb-1" id="modalTitle">Ürün Adı</h5>
+          <div class="mb-2" id="modalCalories" style="display:none;">
+            <span class="badge" style="background: rgba(220,53,69,0.1); color: #dc3545; border: 1px solid rgba(220,53,69,0.2); padding: 4px 10px; border-radius: 50px; font-size: 0.75rem;">
+              <i class="fa-solid fa-fire"></i> <span id="modalCaloriesText"></span> kcal
+            </span>
+          </div>
+          <div class="text-muted small mb-2" id="modalUpdated" style="display:none;"></div>
+          <p class="text-muted small mb-2" id="modalPortion"></p>
+          <p class="mb-3" id="modalDesc" style="font-size: 0.9rem; line-height: 1.5;"></p>
+          <div id="modalAllergens" style="display:none;" class="mb-3">
+            <h6 class="fw-bold mb-2" style="font-size: 0.85rem;"><i class="fa-solid fa-circle-exclamation text-warning me-1"></i>Alerjenler</h6>
+            <div id="modalAllergensContent" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span class="fw-bold modal-price" id="modalPrice" style="font-size: 1.3rem;">0 ₺</span>
+          </div>
+        </div>
+        <button type="button" class="floating-close-btn" id="modalFloatingClose">
+          <i class="fa-solid fa-xmark"></i> Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== BOTTOM NAV ====== -->
+  <div class="bottom-nav" id="bottomNav">
+    <button class="nav-item-btn" id="ratingNavBtn">
+      <i class="fa-regular fa-star"></i>
+      <span>Puan Ver</span>
+    </button>
+    <div class="nav-action-wrapper">
+      <a href="index.html" class="nav-action-btn">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+    <button class="nav-item-btn" id="socialNavBtn">
+      <i class="fa-solid fa-users-viewfinder"></i>
+      <span>Takip Et</span>
+    </button>
+    
+    
+  </div>
+
+  
+
+  <!-- ====== SOCIAL MODAL ====== -->
+  <div class="custom-modal-overlay" id="socialModal" style="display:none;">
+    <div class="custom-modal-card">
+      <div class="custom-modal-header">
+        <h5><i class="fa-solid fa-users-viewfinder" style="color: var(--gold-primary);"></i> Bizi Takip Edin</h5>
+        <button class="custom-modal-close" data-dismiss="socialModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="custom-modal-body">
+        <div class="social-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <a href="https://www.instagram.com/gollokantasi/" target="_blank" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fab fa-instagram" style="font-size: 1.8rem; color: #E1306C;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">Instagram</span>
+          </a>
+          <a href="https://wa.me/905438807906" target="_blank" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25D366;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">WhatsApp</span>
+          </a>
+          <a href="tel:+905438807906" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fa-solid fa-phone" style="font-size: 1.8rem; color: #34b7f1;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">Arama</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- ====== LEGAL MODAL ====== -->
+  <div class="custom-modal-overlay" id="legalModal" style="display:none;">
+    <div class="custom-modal-card">
+      <div class="custom-modal-header">
+        <h5 style="color: #dc3545;"><i class="fa fa-triangle-exclamation"></i> Yasal Bilgilendirme</h5>
+        <button class="custom-modal-close" data-dismiss="legalModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="custom-modal-body" style="text-align: left; line-height: 1.7; font-size: 0.85rem; color: var(--muted-color);">
+        <p>1. Menümüzdeki kalori ve alerjen bilgileri yaklaşık değerlerdir.</p>
+        <p>2. Fiyatlarımıza KDV dahildir. Tüm fiyatlar Türk Lirası (₺) cinsindendir.</p>
+        
+        <p>4. İşletmemizde kuver veya servis ücreti alınmamaktadır.</p>
+        <p>5. Etli porsiyonlardaki gramajlar pişmemiş net ağırlıklardır.</p>
+        <p>6. 18 yaş altına nargile ve alkollü ürün satışı yapılmaz.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <p class="fw-bold">GÖL RESTAURANT & CAFE — MARKO'NUN YERİ</p>
+    <p style="opacity: 0.8; font-size: 0.85rem;">Balıklıgöl Camii Mah. Haliliye / Şanlıurfa • <a href="tel:+905438807906">0543 880 79 06</a></p>
+    <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 10px;">© 2026 Göl Restaurant Dijital QR Menü</p>
+  </footer>
+
+  <!-- ====== APP LOGIC ====== -->
+  <script src="menu-app.js?v=4"></script>
+</body>
+</html>

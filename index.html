@@ -10,7 +10,7 @@
   <!-- OpenGraph Tags for Social Sharing & WhatsApp previews -->
   <meta property="og:title" content="Göl Restaurant & Cafe | Marko'nun Yeri - Balıklıgöl Şanlıurfa">
   <meta property="og:description" content="Şanlıurfa Balıklıgöl'ün büyüleyici atmosferinde lezzet, huzur ve keyfin adresi. Dijital menümüzü inceleyin.">
-  <meta property="og:image" content="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
+  <meta property="og:image" content="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
   <meta property="og:type" content="restaurant">
   <meta property="og:locale" content="tr_TR">
 
@@ -20,9 +20,9 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Göl Restaurant & Cafe (Marko'nun Yeri)",
-    "image": "asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg",
+    "image": "asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg",
     "telephone": "+905448687876",
-    "email": "hasan.sagir@hotmail.com",
+    "email": "Hasan.6491@hotmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Balıklıgöl Cami Mahallesi",
@@ -58,10 +58,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+  <link rel="icon" type="image/png" href="asset/görseller/son%20logo.png">
   
   <!-- Main CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -69,9 +69,9 @@
   <div class="top-announcement">
     <div class="container top-announcement-content">
       <span><i class="fa-solid fa-location-dot"></i> Balıklıgöl / Şanlıurfa</span>
-      <span class="live-status-pill" id="liveStatusPill"><i class="fa-solid fa-circle"></i> Açık</span>
-      <a href="menu.html" class="top-menu-badge"><i class="fa-solid fa-qrcode"></i> DİJİTAL QR MENÜ</a>
-      <span><i class="fa-solid fa-phone"></i> <a href="tel:+905448687876">+90 (544) 868 78 76</a></span>
+      <span class="live-status-pill open" id="liveStatusPill"><i class="fa-solid fa-circle"></i> 7/24 Açığız</span>
+      <a href="qr-menu.html" class="top-menu-badge"><i class="fa-solid fa-qrcode"></i> DİJİTAL QR MENÜ</a>
+      <span><i class="fa-solid fa-phone"></i> <a href="tel:+905438807906">0543 880 79 06</a></span>
     </div>
   </div>
 
@@ -79,8 +79,8 @@
   <header class="main-header">
     <div class="container header-container">
       <a href="#" class="brand-logo">
-        <div class="logo-emblem">
-          <i class="fa-solid fa-crown"></i>
+        <div class="logo-emblem" style="background: transparent; box-shadow: none; border-radius: 50%; overflow: hidden;">
+          <img src="asset/görseller/son%20logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="logo-text">
           <span class="brand-name">GÖL RESTAURANT</span>
@@ -98,10 +98,13 @@
 
       <!-- Action Buttons -->
       <div class="header-actions">
-        <a href="menu.html" class="btn btn-gold btn-sm">
+        <a href="qr-menu.html" class="btn btn-gold btn-sm">
           <i class="fa-solid fa-utensils"></i> DİJİTAL MENÜ
         </a>
-        <a href="tel:+905448687876" class="btn btn-outline btn-sm hide-mobile">
+        <button class="lang-toggle-btn" id="themeToggleBtn" title="Tema Değiştir">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="tel:+905438807906" class="btn btn-outline btn-sm hide-mobile">
           <i class="fa-solid fa-phone"></i> ARA
         </a>
         <button class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Menüyü Aç">
@@ -122,13 +125,13 @@
       <nav class="mobile-nav-links">
         <a href="#hero" class="mobile-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
         <a href="#about" class="mobile-link"><i class="fa-solid fa-landmark"></i> Tarihçe & Ambiyans</a>
-        <a href="menu.html" class="mobile-link"><i class="fa-solid fa-utensils"></i> Dijital QR Menü</a>
+        <a href="qr-menu.html" class="mobile-link"><i class="fa-solid fa-utensils"></i> Dijital QR Menü</a>
         <a href="#gallery" class="mobile-link"><i class="fa-solid fa-images"></i> Fotoğraf Galerisi</a>
         <a href="#contact" class="mobile-link"><i class="fa-solid fa-phone"></i> İletişim & Konum</a>
       </nav>
       <div class="drawer-footer">
         <p><i class="fa-solid fa-user-tie"></i> Hasan SAĞIR</p>
-        <a href="tel:+905448687876" class="btn btn-gold btn-block"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
+        <a href="tel:+905438807906" class="btn btn-gold btn-block"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
       </div>
     </div>
   </header>
@@ -148,7 +151,7 @@
       </p>
 
       <div class="hero-cta-group">
-        <a href="menu.html" class="btn btn-gold btn-lg btn-glow">
+        <a href="qr-menu.html" class="btn btn-gold btn-lg btn-glow">
           <i class="fa-solid fa-qrcode"></i> Dijital QR Menüyü İncele
         </a>
         <a href="#contact" class="btn btn-glass btn-lg">
@@ -186,6 +189,20 @@
             <p>Közde demleme çay ve geleneksel Urfa mırrası</p>
           </div>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="feature-info">
+            <h4>7/24 Açık</h4>
+            <p>Günün her saati açığız, kapımız hep açık</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-battery-full"></i></div>
+          <div class="feature-info">
+            <h4>Şarj İstasyonu</h4>
+            <p>Masanızda veya ortak alanda şarj imkanı</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -194,8 +211,8 @@
   <section id="about" class="about-section">
     <div class="container grid-2-col">
       <div class="about-image-wrapper">
-        <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Görünümü" class="about-img main-img" loading="lazy">
-        <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Göl Restaurant Nargile ve Havuz" class="about-img accent-img" loading="lazy">
+        <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Görünümü" class="about-img main-img" loading="lazy">
+        <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Göl Restaurant Nargile ve Havuz" class="about-img accent-img" loading="lazy">
         <div class="experience-badge">
           <span class="num">Marko'nun Yeri</span>
           <span class="txt">Köklü Misafirperverlik</span>
@@ -282,7 +299,7 @@
         </div>
 
         <div class="teaser-cta-box">
-          <a href="menu.html" class="btn btn-gold btn-lg btn-glow">
+          <a href="qr-menu.html" class="btn btn-gold btn-lg btn-glow">
             <i class="fa-solid fa-qrcode"></i> Tüm QR Menüyü Aç & İncele
           </a>
         </div>
@@ -299,50 +316,95 @@
         <p class="section-desc max-600">Göl Restaurant & Cafe'nin büyüleyici geceleri, otantik havuz başı ve zengin sunumlarımız.</p>
       </div>
 
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item" data-index="0" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
-          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Işıkları" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Urfa Kalesi Manzaralı Gece Bahçesi</span>
-          </div>
+      
+      
+      <style>
+        .gallery-track::-webkit-scrollbar {
+          display: none;
+        }
+        .gallery-track {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .gallery-slide {
+          flex: 0 0 100%; /* Sadece bir görsel görünür */
+          height: 500px;
+          scroll-snap-align: center;
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        @media(min-width: 768px) {
+          .gallery-slide {
+            height: 600px;
+          }
+        }
+        .gallery-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      </style>
+<!-- CSS Scroll-Snap Slider -->
+      <div class="gallery-slider-container" style="position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; border-radius: 15px;">
+        <div class="gallery-track" id="galleryTrack" style="display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 10px;">
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_1.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
-        <div class="gallery-item" data-index="1" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.38.jpeg">
-          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38.jpeg" alt="Antika Telefon ve Karanfil Sunumu" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Nostaljik Köşe & İkramlarımız</span>
-          </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_2.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
-        <div class="gallery-item" data-index="2" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg">
-          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Havuz Başı Nargile ve Deri Menü" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Havuz Başı Nargile & Bahçe Keyfi</span>
-          </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_3.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
-        <div class="gallery-item" data-index="3" data-src="asset/WhatsApp Image 2026-08-08 at 13.09.39 (1).jpeg">
-          <img src="asset/WhatsApp Image 2026-08-08 at 13.09.39 (1).jpeg" alt="Göl Restaurant Tanıtım Afişi" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Göl Restaurant & Cafe Tabela ve Ambiyans</span>
-          </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_4.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
-        <div class="gallery-item" data-index="4" data-src="asset/balıklıgöl.jpg">
-          <img src="asset/balıklıgöl.jpg" alt="Tarihi Balıklıgöl Görünümü" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Tarihi Balıklıgöl Havzası</span>
-          </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_5.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
-        <div class="gallery-item" data-index="5" data-src="asset/balıklıgöl3.jpg">
-          <img src="asset/balıklıgöl3.jpg" alt="Balıklıgöl Parkı" loading="lazy">
-          <div class="gallery-overlay">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>Doğayla İç İçe Park Yolu</span>
-          </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_6.jpg" alt="Göl Lokantası Galeri" loading="lazy">
         </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_7.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_8.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_9.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_10.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_11.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+
+        <div class="gallery-slide">
+          <img src="asset/galeri/final_gallery_12.jpg" alt="Göl Lokantası Galeri" loading="lazy">
+        </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <button id="prevSlide" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="nextSlide" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
+
     </div>
   </section>
 
@@ -364,15 +426,15 @@
             <div class="card-details">
               <div class="card-detail-row">
                 <i class="fa-solid fa-phone"></i>
-                <a href="tel:+905448687876">+90 (544) 868 78 76</a>
+                <a href="tel:+905438807906">0543 880 79 06</a>
               </div>
               <div class="card-detail-row">
                 <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:hasan.sagir@hotmail.com">hasan.sagir@hotmail.com</a>
+                <a href="mailto:Hasan.6491@hotmail.com">Hasan.6491@hotmail.com</a>
               </div>
               <div class="card-detail-row">
                 <i class="fa-brands fa-instagram"></i>
-                <a href="https://instagram.com/golrestaurantcafe" target="_blank">@golrestaurantcafe</a> / <a href="https://instagram.com/golkafeant" target="_blank">@golkafeant</a>
+                <a href="https://instagram.com/gollokantasi" target="_blank">@gollokantasi</a>
               </div>
               <div class="card-detail-row">
                 <i class="fa-solid fa-location-dot"></i>
@@ -397,15 +459,15 @@
         </p>
 
         <div class="contact-quick-buttons">
-          <a href="tel:+905448687876" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Hemen Arayın</a>
+          <a href="tel:+905438807906" class="btn btn-gold"><i class="fa-solid fa-phone"></i> Hemen Arayın</a>
           <a href="https://maps.google.com/?q=Balıklıgöl+Şanlıurfa" target="_blank" class="btn btn-outline"><i class="fa-solid fa-directions"></i> Haritada Yol Tarifi Al</a>
         </div>
 
         <div class="hours-card">
           <h4><i class="fa-solid fa-clock"></i> Çalışma Saatleri</h4>
           <ul>
-            <li><span>Hafta İçi:</span> <strong>08:00 - 01:00</strong></li>
-            <li><span>Hafta Sonu:</span> <strong>08:00 - 02:00</strong></li>
+            <li><span>Hafta İçi:</span> <strong>7/24</strong></li>
+            <li><span>Hafta Sonu:</span> <strong>7/24</strong></li>
             <li><span>Kahvaltı Servisi:</span> <strong>08:00 - 12:30</strong></li>
           </ul>
         </div>
@@ -425,15 +487,15 @@
       <div class="footer-links">
         <a href="#hero">Ana Sayfa</a>
         <a href="#about">Tarihçe</a>
-        <a href="#menu">Menü</a>
+        <a href="qr-menu.html">Menü</a>
         <a href="#gallery">Galeri</a>
         <a href="#contact">İletişim</a>
       </div>
 
       <div class="footer-socials">
-        <a href="https://instagram.com/golrestaurantcafe" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="tel:+905448687876" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://wa.me/905448687876" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com/gollokantasi" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="tel:+905438807906" aria-label="Telefon"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://wa.me/905438807906" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -456,7 +518,7 @@
   </div>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/905448687876" target="_blank" class="floating-whatsapp-btn" aria-label="WhatsApp İletişim">
+  <a href="https://wa.me/905438807906" target="_blank" class="floating-whatsapp-btn" aria-label="WhatsApp İletişim">
     <i class="fa-brands fa-whatsapp"></i>
     <span class="whatsapp-text">Hızlı İletişim</span>
   </a>
@@ -466,7 +528,96 @@
     <i class="fa-solid fa-chevron-up"></i>
   </button>
 
+  <!-- STICKY BOTTOM NAVIGATION BAR -->
+  <div class="bottom-nav">
+    <button class="nav-item-btn" data-bs-toggle="modal" data-bs-target="#ratingModal">
+      <i class="fa-regular fa-star"></i>
+      <span>Puan Ver</span>
+    </button>
+    <div class="nav-action-wrapper">
+      <a href="qr-menu.html" class="nav-action-btn">
+        <i class="fa-solid fa-utensils"></i>
+      </a>
+    </div>
+    <button class="nav-item-btn" data-bs-toggle="modal" data-bs-target="#socialModal">
+      <i class="fa-solid fa-users-viewfinder"></i>
+      <span>Takip Et</span>
+    </button>
+    
+    
+  </div>
+
+  <!-- RATINGS MODAL -->
+  <div class="modal-backdrop" id="ratingModal" style="display: none;">
+    <div class="modal-card modal-sm text-center">
+      <div class="modal-header">
+        <h3><i class="fa-regular fa-star gold-text"></i> Bizi Değerlendirin</h3>
+        <button class="modal-close" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body pb-5">
+        <p class="text-muted small mb-3">Hizmet kalitemizi artırmamıza yardımcı olmak için lütfen puan verin.</p>
+        <div class="fs-1 text-warning mb-3" id="starContainer" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+          <i class="far fa-star rating-star" style="cursor:pointer; font-size: 2.2rem; color: #D4AF37;" onclick="rate(1)"></i>
+          <i class="far fa-star rating-star" style="cursor:pointer; font-size: 2.2rem; color: #D4AF37;" onclick="rate(2)"></i>
+          <i class="far fa-star rating-star" style="cursor:pointer; font-size: 2.2rem; color: #D4AF37;" onclick="rate(3)"></i>
+          <i class="far fa-star rating-star" style="cursor:pointer; font-size: 2.2rem; color: #D4AF37;" onclick="rate(4)"></i>
+          <i class="far fa-star rating-star" style="cursor:pointer; font-size: 2.2rem; color: #D4AF37;" onclick="rate(5)"></i>
+        </div>
+        <textarea id="userComment" placeholder="Görüşlerinizi yazınız..." style="width: 100%; min-height: 80px; padding: 10px; border-radius: var(--radius-md); background: var(--bg-dark); border: 1px solid var(--border-subtle); color: var(--text-primary); outline: none; margin-bottom: 15px;"></textarea>
+        <button class="btn btn-gold btn-block" onclick="sendRating()">Gönder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL MEDIA MODAL -->
+  <div class="modal-backdrop" id="socialModal" style="display: none;">
+    <div class="modal-card modal-sm text-center">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-users-viewfinder gold-text"></i> Bizi Takip Edin</h3>
+        <button class="modal-close" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted small" style="margin-bottom: 20px;">Sosyal medya hesaplarımız üzerinden güncel paylaşımlarımıza ve kampanyalarımıza göz atabilirsiniz.</p>
+        <div class="social-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <a href="https://www.instagram.com/gollokantasi/" target="_blank" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fab fa-instagram" style="font-size: 1.8rem; color: #E1306C;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">Instagram</span>
+          </a>
+          <a href="https://wa.me/905438807906" target="_blank" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25D366;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">WhatsApp</span>
+          </a>
+          <a href="tel:+905438807906" class="btn btn-glass" style="display: flex; flex-direction: column; height: 90px; gap: 8px; justify-content: center; align-items: center;">
+            <i class="fa-solid fa-phone" style="font-size: 1.8rem; color: #34b7f1;"></i>
+            <span style="font-size: 0.8rem; font-weight: 600;">Arama</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- LEGAL MODAL -->
+  <div class="modal-backdrop" id="legalModal" style="display: none;">
+    <div class="modal-card text-center" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="text-danger"><i class="fa fa-triangle-exclamation me-2"></i> Yasal Bilgilendirme</h3>
+        <button class="modal-close" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="text-align: left; line-height: 1.6; font-size: 0.85rem; color: var(--text-secondary);">
+        <p class="mb-2">1. Menümüzdeki kalori ve alerjen bilgileri yaklaşık değerlerdir ve tıbbi tavsiye yerine geçmez. Çölyak veya ciddi gıda alerjiniz varsa lütfen sipariş vermeden önce servis personelimizi bilgilendiriniz.</p>
+        <p class="mb-2">2. Fiyatlarımıza KDV dahildir. Tüm fiyatlar Türk Lirası (₺) cinsinden belirtilmiştir.</p>
+        
+        <p class="mb-2">4. İşletmemizde kuver veya servis ücreti adı altında ek bir bedel alınmamaktadır.</p>
+        <p class="mb-2">5. Etli porsiyonlarımızda kullanılan gramajlar pişmemiş net et ağırlıklarını ifade eder.</p>
+        <p class="mb-0">6. Yasal mevzuatlar gereği 18 yaşından küçüklere nargile ve alkollü ürün satışı yapılmamaktadır.</p>
+      </div>
+    </div>
+  </div>
+
+  
   <!-- Main Application Logic Script -->
-  <script src="app.js"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

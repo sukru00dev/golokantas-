@@ -69,7 +69,7 @@ const tableBadgeNum = document.getElementById('tableBadgeNum');
 document.addEventListener('DOMContentLoaded', () => {
   checkUrlTableParameter();
   initGalleryItems();
-  loadMenuFromJson();
+
   setupEventListeners();
   updateLiveStatus();
   updateFavCountUI();
@@ -85,134 +85,13 @@ function checkUrlTableParameter() {
   }
 }
 
-// FETCH MENU DATA FROM JSON FILE
-async function loadMenuFromJson() {
-  try {
-    const response = await fetch('data/menu.json');
-    if (!response.ok) throw new Error('JSON okunamadı');
-    MENU_DATA = await response.json();
-    renderMenuItems();
-  } catch (error) {
-    console.error('JSON Yükleme Hatası:', error);
-  }
-}
 
-// RENDER MENU ITEMS WITH FILTERS & FAVORITES
-function renderMenuItems() {
-  if (!menuItemsGrid) return;
 
-  const filtered = MENU_DATA.filter(item => {
-    const matchesCategory = state.currentCategory === 'all' || item.category === state.currentCategory;
-    
-    let matchesQuick = true;
-    if (state.quickFilter === 'popular') matchesQuick = !!item.popular;
-    else if (state.quickFilter === 'chef') matchesQuick = !!item.chefChoice;
-    else if (state.quickFilter === 'spicy') matchesQuick = !!item.spicy;
-    else if (state.quickFilter === 'favorites') matchesQuick = state.favorites.has(item.id);
 
-    const query = state.searchQuery.toLowerCase();
-    const matchesSearch = !query || 
-      item.title.toLowerCase().includes(query) || 
-      item.description.toLowerCase().includes(query);
 
-    return matchesCategory && matchesQuick && matchesSearch;
-  });
 
-  if (filtered.length === 0) {
-    menuItemsGrid.style.display = 'none';
-    noResultsState.style.display = 'block';
-    return;
-  }
 
-  menuItemsGrid.style.display = 'grid';
-  noResultsState.style.display = 'none';
 
-  menuItemsGrid.innerHTML = filtered.map(item => {
-    const isFav = state.favorites.has(item.id);
-
-    return `
-      <div class="menu-card" data-id="${item.id}" onclick="openItemDetail(${item.id})">
-        <div class="card-img-wrapper">
-          <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.onerror=null;this.src='asset/balıklıgöl.jpg';">
-          ${item.badge ? `<span class="card-badge ${item.spicy ? 'spicy' : ''}">${item.badge}</span>` : (item.spicy ? `<span class="card-badge spicy"><i class="fa-solid fa-pepper-hot"></i> Acılı</span>` : '')}
-          <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(${item.id}, event)" aria-label="Favorilere Ekle">
-            <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart"></i>
-          </button>
-        </div>
-        <div class="card-content">
-          <div class="card-header-row">
-            <h3 class="item-title">
-              ${item.title} 
-              ${item.spicy ? '<i class="fa-solid fa-pepper-hot spicy-icon" style="color: #FF5A5F; font-size: 0.85rem; margin-left: 4px;" title="Acılı"></i>' : ''}
-            </h3>
-            <span class="item-price">${item.price} ₺</span>
-          </div>
-          <p class="item-desc">${item.description}</p>
-          <div class="card-footer-row">
-            <span class="portion-info"><i class="fa-solid fa-scale-balanced"></i> ${item.portion}</span>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-// OPEN ITEM DETAIL MODAL (GURME DETAY POPUP)
-function openItemDetail(itemId) {
-  const item = MENU_DATA.find(m => m.id == itemId);
-  if (!item || !itemDetailModal) return;
-
-  detailModalImg.src = item.image;
-  detailModalTitle.textContent = item.title;
-  detailModalPrice.textContent = `${item.price} ₺`;
-  detailModalPortion.innerHTML = `<i class="fa-solid fa-scale-balanced"></i> ${item.portion}`;
-  detailModalDesc.textContent = item.description;
-
-  if (item.badge) {
-    detailModalBadge.textContent = item.badge;
-    detailModalBadge.className = `card-badge ${item.spicy ? 'spicy' : ''}`;
-    detailModalBadge.style.display = 'inline-block';
-  } else {
-    detailModalBadge.style.display = 'none';
-  }
-
-  // Generate Feature Pills
-  let featuresHtml = `<span class="detail-feature-pill"><i class="fa-solid fa-utensils"></i> Kategori: ${getCategoryLabel(item.category)}</span>`;
-  if (item.spicy) featuresHtml += `<span class="detail-feature-pill" style="color: #FF5A5F; border-color: #FF5A5F;"><i class="fa-solid fa-pepper-hot"></i> Acılı Harç</span>`;
-  if (item.chefChoice) featuresHtml += `<span class="detail-feature-pill" style="color: var(--gold-primary);"><i class="fa-solid fa-star"></i> Şefin Seçimi</span>`;
-  if (item.popular) featuresHtml += `<span class="detail-feature-pill"><i class="fa-solid fa-fire"></i> Çok Satan</span>`;
-  featuresHtml += `<span class="detail-feature-pill"><i class="fa-solid fa-check"></i> Günlük Taze Servis</span>`;
-
-  detailModalFeatures.innerHTML = featuresHtml;
-  itemDetailModal.style.display = 'flex';
-}
-
-function getCategoryLabel(cat) {
-  const map = {
-    kebap: 'Kebap & Izgara',
-    yoresel: 'Yöresel Lezzetler',
-    meze: 'Meze & Salata',
-    tatli: 'Tatlılar',
-    icecek: 'İçecekler & Mırra',
-    nargile: 'Nargile Çeşitleri'
-  };
-  return map[cat] || cat;
-}
-
-// RANDOM DISH PICKER ("Bugün Ne Yesem?")
-function pickRandomDish() {
-  if (MENU_DATA.length === 0 || !randomDishModal) return;
-  
-  const randomIndex = Math.floor(Math.random() * MENU_DATA.length);
-  const item = MENU_DATA[randomIndex];
-
-  randomItemTitle.textContent = item.title;
-  randomItemCategory.textContent = getCategoryLabel(item.category);
-  randomItemPrice.textContent = `${item.price} ₺`;
-  randomItemDesc.textContent = item.description;
-
-  randomDishModal.style.display = 'flex';
-}
 
 // TOGGLE FAVORITES
 function toggleFavorite(itemId, event) {
@@ -226,6 +105,7 @@ function toggleFavorite(itemId, event) {
   updateFavCountUI();
   renderMenuItems();
 }
+window.toggleFavorite = toggleFavorite;
 
 function updateFavCountUI() {
   if (favCountSpan) {
@@ -233,61 +113,50 @@ function updateFavCountUI() {
   }
 }
 
+// Global Rating Logic
+let currentRating = 0;
+function rate(num) {
+  currentRating = num;
+  const stars = document.querySelectorAll('.rating-star');
+  stars.forEach((s, i) => {
+    if (i < num) {
+      s.classList.remove('far');
+      s.classList.add('fas');
+    } else {
+      s.classList.remove('fas');
+      s.classList.add('far');
+    }
+  });
+}
+window.rate = rate;
+
+function sendRating() {
+  if (currentRating === 0) {
+    alert("Lütfen önce bir puan seçiniz!");
+    return;
+  }
+  alert("Geri bildiriminiz için teşekkür ederiz!");
+  
+  // Clear and close modal
+  currentRating = 0;
+  const stars = document.querySelectorAll('.rating-star');
+  stars.forEach(s => {
+    s.classList.remove('fas');
+    s.classList.add('far');
+  });
+  const userComment = document.getElementById('userComment');
+  if (userComment) userComment.value = '';
+  
+  const ratingModal = document.getElementById('ratingModal');
+  if (ratingModal) ratingModal.style.display = 'none';
+}
+window.sendRating = sendRating;
+
 // EVENT LISTENERS SETUP
 function setupEventListeners() {
-  // Search Input
-  menuSearchInput?.addEventListener('input', (e) => {
-    state.searchQuery = e.target.value.trim();
-    clearSearchBtn.style.display = state.searchQuery ? 'block' : 'none';
-    renderMenuItems();
-  });
 
-  clearSearchBtn?.addEventListener('click', () => {
-    menuSearchInput.value = '';
-    state.searchQuery = '';
-    clearSearchBtn.style.display = 'none';
-    renderMenuItems();
-  });
 
-  resetSearchBtn?.addEventListener('click', () => {
-    menuSearchInput.value = '';
-    state.searchQuery = '';
-    state.currentCategory = 'all';
-    state.quickFilter = 'all';
-    
-    document.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.pill-btn[data-category="all"]')?.classList.add('active');
 
-    document.querySelectorAll('.quick-tag-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.quick-tag-btn[data-filter="all"]')?.classList.add('active');
-
-    clearSearchBtn.style.display = 'none';
-    renderMenuItems();
-  });
-
-  // Category Pills
-  categoryPills?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.pill-btn');
-    if (!btn) return;
-
-    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    state.currentCategory = btn.dataset.category;
-    renderMenuItems();
-  });
-
-  // Quick Filter Badges
-  quickFilterTags?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.quick-tag-btn');
-    if (!btn) return;
-
-    document.querySelectorAll('.quick-tag-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    state.quickFilter = btn.dataset.filter;
-    renderMenuItems();
-  });
 
   // Mobile Drawer Navigation & Backdrop
   function openDrawer() {
@@ -315,12 +184,6 @@ function setupEventListeners() {
     itemDetailModal.style.display = 'none';
   });
 
-  itemDetailModal?.addEventListener('click', (e) => {
-    if (e.target === itemDetailModal) {
-      itemDetailModal.style.display = 'none';
-    }
-  });
-
   // Random Dish Picker Modal Events
   randomPickerBtn?.addEventListener('click', pickRandomDish);
   spinAgainBtn?.addEventListener('click', pickRandomDish);
@@ -328,11 +191,55 @@ function setupEventListeners() {
     randomDishModal.style.display = 'none';
   });
 
-  randomDishModal?.addEventListener('click', (e) => {
-    if (e.target === randomDishModal) {
-      randomDishModal.style.display = 'none';
-    }
+  // General Modal Toggle Event Listeners (Bootstrap emulation)
+  document.querySelectorAll('[data-bs-toggle="modal"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-bs-target');
+      const modal = document.querySelector(targetId);
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    });
   });
+
+  document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = btn.closest('.modal-backdrop');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    });
+  });
+
+  // Close modals when backdrop is clicked
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        backdrop.style.display = 'none';
+      }
+    });
+  });
+
+  // Theme Toggler
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  if (themeToggleBtn) {
+    const isLight = localStorage.getItem('gol_theme') === 'light';
+    if (isLight) {
+      document.body.classList.add('light-theme');
+      themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    } else {
+      themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+    
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const currentlyLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('gol_theme', currentlyLight ? 'light' : 'dark');
+      themeToggleBtn.innerHTML = currentlyLight ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+    });
+  }
 
   // Gallery Lightbox & Navigation
   lightboxClose?.addEventListener('click', () => {
@@ -369,10 +276,10 @@ function setupEventListeners() {
         state.galleryIndex = (state.galleryIndex + 1) % state.galleryItems.length;
         updateLightboxImage();
       }
-    } else if (itemDetailModal && itemDetailModal.style.display === 'flex' && e.key === 'Escape') {
-      itemDetailModal.style.display = 'none';
-    } else if (randomDishModal && randomDishModal.style.display === 'flex' && e.key === 'Escape') {
-      randomDishModal.style.display = 'none';
+    } else if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop').forEach(m => {
+        m.style.display = 'none';
+      });
     }
   });
 
@@ -407,32 +314,7 @@ function updateLightboxImage() {
 
 // LIVE OPENING HOURS STATUS BADGE
 function updateLiveStatus() {
-  if (!liveStatusPill) return;
-
-  const now = new Date();
-  const day = now.getDay(); // 0: Sunday, 6: Saturday
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const timeVal = hours * 60 + minutes;
-
-  const openTime = 8 * 60; // 08:00
-  const closeTimeWeekday = 25 * 60; // 01:00 (next day)
-  const closeTimeWeekend = 26 * 60; // 02:00 (next day)
-
-  const isWeekend = (day === 0 || day === 6);
-  const closingLimit = isWeekend ? closeTimeWeekend : closeTimeWeekday;
-
-  // Normalize time for past midnight (00:00 - 02:00)
-  let adjustedTime = timeVal;
-  if (hours < 5) adjustedTime += 24 * 60;
-
-  if (adjustedTime >= openTime && adjustedTime < closingLimit) {
-    liveStatusPill.className = 'live-status-pill open';
-    liveStatusPill.innerHTML = `<i class="fa-solid fa-circle"></i> Şu An Açığız (${isWeekend ? '08:00 - 02:00' : '08:00 - 01:00'})`;
-  } else {
-    liveStatusPill.className = 'live-status-pill closed';
-    liveStatusPill.innerHTML = `<i class="fa-solid fa-circle"></i> Kapalı (Açılış: 08:00)`;
-  }
+  // Disabled as per user request - static 7/24
 }
 
 // SCROLL TO TOP & SCROLLSPY CONTROLS
@@ -441,13 +323,23 @@ function setupScrollControls() {
   const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
 
   window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
+    const scrollY = window.scrollY;
 
     // Scroll to Top visibility
     if (scrollY > 400) {
       scrollTopBtn?.classList.add('visible');
     } else {
       scrollTopBtn?.classList.remove('visible');
+    }
+
+    // Bottom Nav scrolled class toggle
+    const bottomNav = document.querySelector('.bottom-nav');
+    if (bottomNav) {
+      if (scrollY > 50) {
+        bottomNav.classList.add('scrolled');
+      } else {
+        bottomNav.classList.remove('scrolled');
+      }
     }
 
     // Active Nav Link Observer
@@ -474,3 +366,52 @@ function setupScrollControls() {
 }
 
 
+
+
+
+// --- GALLERY SLIDER LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('galleryTrack');
+  const prevBtn = document.getElementById('prevSlide');
+  const nextBtn = document.getElementById('nextSlide');
+  
+  let autoSlideInterval;
+
+  const startAutoSlide = () => {
+    autoSlideInterval = setInterval(() => {
+      if (!track) return;
+      // If reached the end, loop back to start
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); // Scroll by slide width
+      }
+    }, 2500); // Auto slide every 2.5 seconds
+  };
+
+  const stopAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+  };
+
+  if (track && prevBtn && nextBtn) {
+    startAutoSlide(); // Start initially
+
+    // Pause on hover or touch
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
+    track.addEventListener('touchstart', stopAutoSlide);
+    track.addEventListener('touchend', startAutoSlide);
+
+    prevBtn.addEventListener('click', () => {
+      stopAutoSlide();
+      track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+      startAutoSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      stopAutoSlide();
+      track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      startAutoSlide();
+    });
+  }
+});
