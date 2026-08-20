@@ -37,40 +37,18 @@ async function loadMenuData() {
     const res = await fetch('data/menu.json?v=' + new Date().getTime());
     if (!res.ok) throw new Error('JSON yüklenemedi');
     MENU_DATA = await res.json();
-    renderPopularSlider();
     renderCategoryGrid();
   } catch (err) {
     console.error('Menü yükleme hatası:', err);
   }
 }
 
-// ── Popular Slider ──
-function renderPopularSlider() {
-  const container = document.getElementById('popularSlider');
-  if (!container) return;
 
-  const items = MENU_DATA.filter(i => i.popular);
-  if (items.length === 0) {
-    document.getElementById('popularSection').style.display = 'none';
-    return;
-  }
-
-  container.innerHTML = items.map(item => {
-    const price = formatPrice(item.price);
-    return `
-      <div class="fav-card" onclick="openProductModal(${item.id})">
-        <img src="${item.image}" class="fav-img" loading="lazy" alt="${item.title}" onerror="this.src='asset/balıklıgöl.jpg'">
-        <div class="fav-title">${item.title}</div>
-        <div class="fav-price">${price}</div>
-      </div>`;
-  }).join('');
-}
 
 // ── Category Grid (Collapsible Accordion) ──
 function renderCategoryGrid(searchQuery = '') {
   const grid = document.getElementById('categoryGrid');
   const noResults = document.getElementById('noResultsState');
-  const popularSection = document.getElementById('popularSection');
   if (!grid) return;
 
   const query = searchQuery.toLowerCase().trim();
@@ -159,10 +137,6 @@ function renderCategoryGrid(searchQuery = '') {
     noResults.style.display = 'none';
   }
 
-  // Hide popular section during search
-  if (popularSection) {
-    popularSection.style.display = query ? 'none' : '';
-  }
 }
 
 // ── Product Card ──
@@ -371,7 +345,6 @@ function setupModals() {
   const modalMap = {
     'ratingNavBtn': 'ratingModal',
     'socialNavBtn': 'socialModal',
-    'wifiNavBtn': 'wifiModal',
     'legalBtn': 'legalModal'
   };
 
@@ -451,7 +424,9 @@ window.sendRating = sendRating;
 // ── Helpers ──
 function formatPrice(price) {
   if (price === null || price === undefined || price === '') return 'Sorunuz';
-  return typeof price === 'number'
-    ? price.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' ₺'
-    : price + ' ₺';
+  if (typeof price === 'number') {
+    return price.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' ₺';
+  }
+  // String prices like 'İkram' should not get ₺ suffix
+  return price;
 }
