@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Göl Restaurant & Cafe | Marko'nun Yeri - Balıklıgöl Şanlıurfa</title>
   <meta name="description" content="Şanlıurfa Balıklıgöl'ün kalbinde eşsiz Urfa kebapları, mırra, nargile ve otantik atmosfer. Göl Restaurant & Cafe dijital QR menü ve online sipariş notu oluşturma.">
   <meta name="keywords" content="Göl Restaurant, Marko'nun Yeri, Balıklıgöl Kebap, Urfa Kebabı, Balıklıgöl Kafe, Şanlıurfa Nargile, Dijital Menü">
@@ -10,9 +10,10 @@
   <!-- OpenGraph Tags for Social Sharing & WhatsApp previews -->
   <meta property="og:title" content="Göl Restaurant & Cafe | Marko'nun Yeri - Balıklıgöl Şanlıurfa">
   <meta property="og:description" content="Şanlıurfa Balıklıgöl'ün büyüleyici atmosferinde lezzet, huzur ve keyfin adresi. Dijital menümüzü inceleyin.">
-  <meta property="og:image" content="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg">
+  <meta property="og:image" content="asset/görseller/mekan_3.jpeg">
   <meta property="og:type" content="restaurant">
   <meta property="og:locale" content="tr_TR">
+  <link rel="canonical" href="index.html">
 
   <!-- Structured Data: Schema.org Restaurant -->
   <script type="application/ld+json">
@@ -20,8 +21,8 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Göl Restaurant & Cafe (Marko'nun Yeri)",
-    "image": "asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg",
-    "telephone": "+905448687876",
+    "image": "asset/görseller/mekan_3.jpeg",
+    "telephone": "+905438807906",
     "email": "hasan.6491@hotmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -35,15 +36,9 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "01:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday"],
-        "opens": "08:00",
-        "closes": "02:00"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
       }
     ]
   }
@@ -58,7 +53,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="asset/görseller/son%20logo.png">
+  <link rel="icon" type="image/png" href="asset/görseller/logo.png">
   
   <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css?v=6">
@@ -80,7 +75,7 @@
     <div class="container header-container">
       <a href="#" class="brand-logo">
         <div class="logo-emblem" style="background: transparent; box-shadow: none; border-radius: 50%; overflow: hidden;">
-          <img src="asset/görseller/son%20logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          <img src="asset/görseller/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="logo-text">
           <span class="brand-name">GÖL RESTAURANT</span>
@@ -211,8 +206,8 @@
   <section id="about" class="about-section">
     <div class="container grid-2-col">
       <div class="about-image-wrapper">
-        <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Gece Görünümü" class="about-img main-img" loading="lazy">
-        <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.38 (1).jpeg" alt="Göl Restaurant Nargile ve Havuz" class="about-img accent-img" loading="lazy">
+        <img src="asset/görseller/mekan_3.jpeg" alt="Göl Restaurant Gece Görünümü" class="about-img main-img" loading="lazy">
+        <img src="asset/görseller/mekan_2.jpeg" alt="Göl Restaurant Nargile ve Havuz" class="about-img accent-img" loading="lazy">
         <div class="experience-badge">
           <span class="num">Marko'nun Yeri</span>
           <span class="txt">Köklü Misafirperverlik</span>
@@ -568,23 +563,6 @@
 
   
 
-  <!-- LEGAL MODAL -->
-  <div class="modal-backdrop" id="legalModal" style="display: none;">
-    <div class="modal-card text-center" style="max-width: 500px;">
-      <div class="modal-header">
-        <h3 class="text-danger"><i class="fa fa-triangle-exclamation me-2"></i> Yasal Bilgilendirme</h3>
-        <button class="modal-close" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="modal-body" style="text-align: left; line-height: 1.6; font-size: 0.85rem; color: var(--text-secondary);">
-        <p class="mb-2">1. Menümüzdeki kalori ve alerjen bilgileri yaklaşık değerlerdir ve tıbbi tavsiye yerine geçmez. Çölyak veya ciddi gıda alerjiniz varsa lütfen sipariş vermeden önce servis personelimizi bilgilendiriniz.</p>
-        <p class="mb-2">2. Fiyatlarımıza KDV dahildir. Tüm fiyatlar Türk Lirası (₺) cinsinden belirtilmiştir.</p>
-        <p class="mb-2">3. Menümüzdeki ürün görselleri temsilidir, sunumlarda farklılık gösterebilir.</p>
-        <p class="mb-2">4. İşletmemizde kuver veya servis ücreti adı altında ek bir bedel alınmamaktadır.</p>
-        <p class="mb-2">5. Etli porsiyonlarımızda kullanılan gramajlar pişmemiş net et ağırlıklarını ifade eder.</p>
-        <p class="mb-0">6. Yasal mevzuatlar gereği 18 yaşından küçüklere nargile ve alkollü ürün satışı yapılmamaktadır.</p>
-      </div>
-    </div>
-  </div>
 
   
   <!-- Main Application Logic Script -->

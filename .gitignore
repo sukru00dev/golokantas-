@@ -17,3 +17,7 @@ __pycache__/
 
 # Node (if ever used)
 node_modules/
+
+# Development history / logs
+app_history.txt
+app_history_utf8.txt

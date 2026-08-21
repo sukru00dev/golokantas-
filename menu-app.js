@@ -151,7 +151,7 @@ function renderProductCard(item) {
 
   return `
     <div class="product-card-v3" onclick="openProductModal(${item.id})">
-      <img src="${item.image}" alt="${item.title}" class="product-img-v3" loading="lazy" onerror="this.src='asset/balıklıgöl.jpg'">
+      <img src="${item.image}" alt="${item.title}" class="product-img-v3" loading="lazy" onerror="this.onerror=null;this.src='asset/menuler/nargile.jpg'">
       ${badgeHtml}
       <div class="product-info-v3">
         <div class="product-name-v3">${item.title}</div>
@@ -424,6 +424,11 @@ window.sendRating = sendRating;
 // ── Helpers ──
 function formatPrice(price) {
   if (price === null || price === undefined || price === '') return 'Sorunuz';
+  
+  if (typeof price === 'string' && !isNaN(parseFloat(price)) && isFinite(price)) {
+    price = parseFloat(price);
+  }
+  
   if (typeof price === 'number') {
     return price.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' ₺';
   }

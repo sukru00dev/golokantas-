@@ -2,12 +2,13 @@
 <html lang="tr" style="height: 100%;">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Dijital QR Menü | Göl Restaurant & Cafe</title>
   <meta name="description" content="Göl Restaurant & Cafe (Marko'nun Yeri) dijital QR lezzet menüsü. Urfa kebapları, mırra, tatlı ve nargile çeşitleri.">
   <meta name="theme-color" content="#D4AF37">
+  <link rel="canonical" href="qr-menu.html">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="asset/görseller/son%20logo.png">
+  <link rel="icon" type="image/png" href="asset/görseller/logo.png">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css?v=6">
@@ -31,7 +32,7 @@
   <nav class="navbar">
     <div class="container-fluid d-flex justify-content-between align-items-center">
       <a class="navbar-brand me-auto" href="index.html" style="display: flex; align-items: center; gap: 8px;">
-        <img src="asset/görseller/son%20logo.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;">
+        <img src="asset/görseller/logo.png" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;">
         <span>GÖL LOKANTASI</span>
       </a>
       <div class="d-flex align-items-center gap-2">
@@ -43,7 +44,7 @@
 
   <!-- ====== TOP BANNER IMAGE ====== -->
   <div id="mainBanner" class="main-banner">
-    <img src="asset/görseller/WhatsApp Image 2026-08-08 at 13.09.39.jpeg" alt="Göl Restaurant Banner" class="banner-img">
+    <img src="asset/görseller/mekan_3.jpeg" alt="Göl Restaurant Banner" class="banner-img">
   </div>
 
   <!-- ====== SEARCH + LEGAL BUTTON ====== -->
@@ -129,6 +130,28 @@
   </div>
 
   
+
+  <!-- ====== RATING MODAL ====== -->
+  <div class="custom-modal-overlay" id="ratingModal" style="display:none;">
+    <div class="custom-modal-card text-center">
+      <div class="custom-modal-header">
+        <h5><i class="fa-regular fa-star" style="color: var(--gold-primary);"></i> Bizi Değerlendirin</h5>
+        <button class="custom-modal-close" data-dismiss="ratingModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="custom-modal-body">
+        <p class="text-muted small mb-3">Hizmet kalitemizi artırmamıza yardımcı olmak için lütfen puan verin.</p>
+        <div class="star-container" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 15px; cursor: pointer;">
+          <i class="far fa-star rating-star" onclick="rate(1)"></i>
+          <i class="far fa-star rating-star" onclick="rate(2)"></i>
+          <i class="far fa-star rating-star" onclick="rate(3)"></i>
+          <i class="far fa-star rating-star" onclick="rate(4)"></i>
+          <i class="far fa-star rating-star" onclick="rate(5)"></i>
+        </div>
+        <textarea id="userComment" class="form-control mb-3" placeholder="Görüşlerinizi yazınız..."></textarea>
+        <button class="btn-gold-full" onclick="sendRating()">Gönder</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ====== SOCIAL MODAL ====== -->
   <div class="custom-modal-overlay" id="socialModal" style="display:none;">
