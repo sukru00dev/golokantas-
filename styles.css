@@ -1341,7 +1341,7 @@ button, input, select, textarea {
 /* FLOATING WHATSAPP BUTTON */
 .floating-whatsapp-btn {
   position: fixed;
-  bottom: 55px;
+  bottom: 105px;
   right: 25px;
   z-index: 98;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
@@ -1372,7 +1372,7 @@ button, input, select, textarea {
 
 @media (max-width: 768px) {
   .floating-whatsapp-btn {
-    bottom: 55px;
+    bottom: 105px;
     right: 20px;
     width: 48px;
     height: 48px;
@@ -2693,7 +2693,7 @@ body.light-theme .social-grid .btn-glass:hover {
 /* 2 & 3. Floating Buttons Collision on Mobile */
 @media (max-width: 991px) {
   .floating-whatsapp-btn {
-    bottom: 125px !important;
+    bottom: 175px !important;
     right: 20px !important;
     width: 48px !important;
     height: 48px !important;
